@@ -1,3 +1,5 @@
+from operator import mul
+from functools import reduce
 def falling(n, k):
     """Compute the falling factorial of n to depth k.
 
@@ -11,17 +13,20 @@ def falling(n, k):
     1
     """
     "*** YOUR CODE HERE ***"
-    if(k == 0):
+    # if(k == 0):
+    #     return 1
+    # result = 1
+    # num = 0
+    # for i in range(n, 0, -1):
+    #     result *= i
+    #     num += 1
+    #     if num == k:
+    #         break
+    # #    print("DUBUG i is : ", i)
+    # return result
+    if k == 0:
         return 1
-    result = 1
-    num = 0
-    for i in range(n, 0, -1):
-        result *= i
-        num += 1
-        if num == k:
-            break
-    #    print("DUBUG i is : ", i)
-    return result
+    return reduce(mul, range(n, n - k, -1))
 
 
 def sum_digits(y):
@@ -63,16 +68,24 @@ def double_eights(n):
     False
     """
     "*** YOUR CODE HERE ***"
-    dig = 0
-    list = []
-    while(n > 0):
-        dig = n % 10
+    # dig = 0
+    # list = []
+    # while(n > 0):
+    #     dig = n % 10
+    #     n //= 10
+    #     if dig == 8:
+    #         list.append(dig)
+    #         if(len(list) == 2):
+    #             return True
+    #     else:
+    #         if(list):
+    #             list.pop()   
+    # return False 
+    
+    # 如果算三个相邻的八 或者更多，这样的写法麻烦
+    while n:
+        last = n % 10
         n //= 10
-        if dig == 8:
-            list.append(dig)
-            if(len(list) == 2):
-                return True
-        else:
-            if(list):
-                list.pop()   
-    return False 
+        if last == 8 == (n % 10):
+            return True
+    return False
