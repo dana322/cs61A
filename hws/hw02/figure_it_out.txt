@@ -1,0 +1,9 @@
+add
+add_church(one, one)
+return lambda f: lambda x: f(one(f)(x))
+= lambda f: lambda x: f(f(x))
+
+church_to_int(add_church)
+= return increment(increment(x))
+
+https://zhuanlan.zhihu.com/p/267917164
