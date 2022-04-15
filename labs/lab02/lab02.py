@@ -91,11 +91,11 @@ def composite_identity(f, g):
     False
     """
     "*** YOUR CODE HERE ***"
-    def inner(x):
-        if compose1(f, g)(x) == compose1(g, f)(x):
-            return True
-        return False
-    return inner
+    # def inner(x):
+    #     if compose1(f, g)(x) == compose1(g, f)(x):
+    #         return True
+    #     return False
+    return lambda x: compose1(f, g)(x) == compose1(g, f)(x)
     
 
 
@@ -130,16 +130,12 @@ def cycle(f1, f2, f3):
         def inner2(x, n = input_n):
             for i in range(n + 1):
                 if(i == 0):
-                    # print(1)
                     x = x
                 elif(i % 3 == 1):
-                    # print(2)
                     x = f1(x)
                 elif(i % 3 == 2):
-                    # print(3)
                     x = f2(x)
                 elif(i % 3 == 0):
-                    # print(4)
                     x = f3(x)
             return x
         return inner2
